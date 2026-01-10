@@ -207,6 +207,6 @@ global_search_doctypes = {
 }
 
 domains = {
-	'Agriculture': 'agriculture.agriculture.domain',
+	'Agriculture': 'agriculture.domain',
 }
 
