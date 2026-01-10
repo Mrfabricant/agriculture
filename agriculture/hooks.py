@@ -10,7 +10,7 @@ app_email = "pandikunta@frappe.io"
 app_license = "MIT"
 
 
-required_apps = [""]
+required_apps = []
 
 # Includes in <head>
 # ------------------
