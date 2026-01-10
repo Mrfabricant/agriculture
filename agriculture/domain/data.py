@@ -1,4 +1,4 @@
-def get_data():
+def data():
     return {
         "module_name": "Agriculture",
         "description": "Agriculture domain features",
