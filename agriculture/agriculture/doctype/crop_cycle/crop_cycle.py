@@ -1,7 +1,6 @@
 # Copyright (c) 2017, Frappe Technologies Pvt. Ltd. and contributors
 # For license information, please see license.txt
 
-
 import ast
 
 import frappe
@@ -17,6 +16,9 @@ class CropCycle(Document):
 	def after_insert(self):
 		self.create_crop_cycle_project()
 		self.create_tasks_for_diseases()
+		# Set current_warehouse to starting warehouse on creation
+		if self.warehouse:
+			self.db_set("current_warehouse", self.warehouse)
 
 	def on_update(self):
 		self.create_tasks_for_diseases()
@@ -42,7 +44,10 @@ class CropCycle(Document):
 				self.import_disease_tasks(disease.disease, disease.start_date)
 				disease.tasks_created = True
 
-				frappe.msgprint(_("Tasks have been created for managing the {0} disease (on row {1})").format(disease.disease, disease.idx))
+				frappe.msgprint(
+					_("Tasks have been created for managing the {0} disease (on row {1})")
+					.format(disease.disease, disease.idx)
+				)
 
 	def import_disease_tasks(self, disease, start_date):
 		disease_doc = frappe.get_doc('Disease', disease)
@@ -83,8 +88,9 @@ class CropCycle(Document):
 		for location in self.linked_location:
 			output['Location'].append(frappe.get_doc('Location', location.location))
 
-		frappe.publish_realtime("List of Linked Docs",
-								output, user=frappe.session.user)
+		frappe.publish_realtime(
+			"List of Linked Docs", output, user=frappe.session.user
+		)
 
 	@frappe.whitelist()
 	def append_to_child(self, obj_to_append):
@@ -94,6 +100,92 @@ class CropCycle(Document):
 
 		self.save()
 
+
+# ------------------------------------------------------------------
+# Stock Entry Hook — auto-update current_warehouse on transfer
+# ------------------------------------------------------------------
+
+def update_current_warehouse(doc, method):
+	"""
+	Called on Stock Entry submit via hooks.py doc_events.
+	If this is a Material Transfer linked to a Crop Cycle project,
+	update the Crop Cycle's current_warehouse to the target warehouse.
+	"""
+	if doc.stock_entry_type != "Material Transfer":
+		return
+
+	if not doc.project:
+		return
+
+	# Find Crop Cycle linked to this project
+	crop_cycle_name = frappe.db.get_value(
+		"Crop Cycle", {"project": doc.project}, "name"
+	)
+
+	if not crop_cycle_name:
+		return
+
+	# Get target warehouse from first item row
+	target_warehouse = None
+	for item in doc.items:
+		if item.t_warehouse:
+			target_warehouse = item.t_warehouse
+			break
+
+	if not target_warehouse:
+		return
+
+	frappe.db.set_value("Crop Cycle", crop_cycle_name, "current_warehouse", target_warehouse)
+
+	frappe.msgprint(
+		f"Crop Cycle <b>{crop_cycle_name}</b> — Current Warehouse updated to "
+		f"<b>{target_warehouse}</b>",
+		indicator="green",
+		alert=True,
+	)
+
+
+def reverse_current_warehouse(doc, method):
+	"""
+	Called on Stock Entry cancel via hooks.py doc_events.
+	Revert current_warehouse back to source warehouse.
+	"""
+	if doc.stock_entry_type != "Material Transfer":
+		return
+
+	if not doc.project:
+		return
+
+	crop_cycle_name = frappe.db.get_value(
+		"Crop Cycle", {"project": doc.project}, "name"
+	)
+
+	if not crop_cycle_name:
+		return
+
+	# Revert to source warehouse
+	source_warehouse = None
+	for item in doc.items:
+		if item.s_warehouse:
+			source_warehouse = item.s_warehouse
+			break
+
+	if not source_warehouse:
+		return
+
+	frappe.db.set_value("Crop Cycle", crop_cycle_name, "current_warehouse", source_warehouse)
+
+	frappe.msgprint(
+		f"Crop Cycle <b>{crop_cycle_name}</b> — Current Warehouse reverted to "
+		f"<b>{source_warehouse}</b>",
+		indicator="orange",
+		alert=True,
+	)
+
+
+# ------------------------------------------------------------------
+# Geometry helpers (original app)
+# ------------------------------------------------------------------
 
 def get_coordinates(doc):
 	return ast.literal_eval(doc.location).get('features')[0].get('geometry').get('coordinates')

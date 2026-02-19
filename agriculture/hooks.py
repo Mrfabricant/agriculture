@@ -107,13 +107,12 @@ after_uninstall = "agriculture.agriculture.setup.cleanup_role_and_permissions"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-#	}
-# }
+doc_events = {
+	"Stock Entry": {
+		"on_submit": "agriculture.agriculture.doctype.crop_cycle.crop_cycle.update_current_warehouse",
+		"on_cancel": "agriculture.agriculture.doctype.crop_cycle.crop_cycle.reverse_current_warehouse",
+	}
+}
 
 # Scheduled Tasks
 # ---------------
@@ -202,11 +201,11 @@ global_search_doctypes = {
 		{'doctype': 'Disease', 'index': 7},
 		{'doctype': 'Crop', 'index': 8},
 		{'doctype': 'Fertilizer', 'index': 9},
-		{'doctype': 'Crop Cycle', 'index': 10}
+		{'doctype': 'Crop Cycle', 'index': 10},
+		{'doctype': 'Plant Mortality', 'index': 11},
 	]
 }
 
 domains = {
 	'Agriculture': ["agriculture.domain"],
 }
-

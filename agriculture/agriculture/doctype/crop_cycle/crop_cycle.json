@@ -14,6 +14,7 @@
   "cost_center",
   "column_break_farm2",
   "estimated_quantity",
+  "current_warehouse",
   "section_break_3",
   "project",
   "column_break_12",
@@ -118,6 +119,15 @@
    "label": "Estimated Plant Quantity"
   },
   {
+   "fieldname": "current_warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Current Warehouse (Block)",
+   "options": "Warehouse",
+   "read_only": 1
+  },
+  {
    "fieldname": "section_break_3",
    "fieldtype": "Section Break"
   },
@@ -182,7 +192,7 @@
   {
    "fieldname": "cost_sapling",
    "fieldtype": "Currency",
-   "label": "Planned Cost / Plant \u2013 Sapling"
+   "label": "Planned Cost / Plant – Sapling"
   },
   {
    "fieldname": "column_break_stages2",
@@ -198,7 +208,7 @@
   {
    "fieldname": "cost_step1",
    "fieldtype": "Currency",
-   "label": "Planned Cost / Plant \u2013 Step 1"
+   "label": "Planned Cost / Plant – Step 1"
   },
   {
    "fieldname": "section_break_stages2",
@@ -214,7 +224,7 @@
   {
    "fieldname": "cost_step2",
    "fieldtype": "Currency",
-   "label": "Planned Cost / Plant \u2013 Step 2"
+   "label": "Planned Cost / Plant – Step 2"
   },
   {
    "fieldname": "column_break_stages3",
@@ -230,7 +240,7 @@
   {
    "fieldname": "cost_step3",
    "fieldtype": "Currency",
-   "label": "Planned Cost / Plant \u2013 Step 3"
+   "label": "Planned Cost / Plant – Step 3"
   },
   {
    "fieldname": "section_break_status",
@@ -248,8 +258,7 @@
   {
    "fieldname": "avg_plant_height",
    "fieldtype": "Float",
-   "label": "Avg Plant Height (cm)",
-   "read_only": 0
+   "label": "Avg Plant Height (cm)"
   },
   {
    "fieldname": "column_break_status2",
@@ -260,6 +269,35 @@
    "fieldtype": "Int",
    "label": "Days Since Start",
    "read_only": 1
+  },
+  {
+   "fieldname": "section_break_mortality",
+   "fieldtype": "Section Break",
+   "label": "Mortality Tracking"
+  },
+  {
+   "fieldname": "total_dead_plants",
+   "fieldtype": "Int",
+   "label": "Total Dead Plants",
+   "read_only": 1
+  },
+  {
+   "fieldname": "mortality_percentage",
+   "fieldtype": "Percent",
+   "label": "Mortality %",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "column_break_mortality",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "surviving_plants",
+   "fieldtype": "Int",
+   "label": "Surviving Plants",
+   "read_only": 1,
+   "in_list_view": 1
   },
   {
    "fieldname": "section_break_12",
@@ -297,7 +335,7 @@
   },
   {
    "depends_on": "eval:!doc.__islocal",
-   "description": "List of diseases detected on the field. When selected it'll automatically add a list of tasks to deal with the disease",
+   "description": "List of diseases detected on the field.",
    "fieldname": "section_break_14",
    "fieldtype": "Section Break",
    "label": "Detected Diseases"
@@ -331,36 +369,6 @@
    "fieldtype": "Table",
    "label": "Plant Analysis",
    "options": "Linked Plant Analysis"
-  },
-  {
-   "fieldname": "section_break_mortality",
-   "fieldtype": "Section Break",
-   "label": "Mortality Tracking"
-  },
-  {
-   "fieldname": "total_dead_plants",
-   "fieldtype": "Int",
-   "label": "Total Dead Plants",
-   "read_only": 1,
-   "in_list_view": 0
-  },
-  {
-   "fieldname": "mortality_percentage",
-   "fieldtype": "Percent",
-   "label": "Mortality %",
-   "read_only": 1,
-   "in_list_view": 1
-  },
-  {
-   "fieldname": "column_break_mortality",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "surviving_plants",
-   "fieldtype": "Int",
-   "label": "Surviving Plants",
-   "read_only": 1,
-   "in_list_view": 1
   }
  ],
  "modified": "2024-01-01 00:00:00.000000",
