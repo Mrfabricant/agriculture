@@ -3,7 +3,7 @@
 
 import frappe
 from frappe.model.document import Document
-from frappe.utils import date_diff, today
+from frappe.utils import date_diff, today, getdate
 
 
 def get_stage_from_height(height):
@@ -39,14 +39,18 @@ class PlantAnalysis(Document):
 
 		crop_cycle = frappe.get_doc("Crop Cycle", self.crop_cycle)
 
+		# Handle collection_datetime as either string or datetime object
+		if self.collection_datetime:
+			if isinstance(self.collection_datetime, str):
+				measurement_date = getdate(self.collection_datetime.split(" ")[0])
+			else:
+				measurement_date = self.collection_datetime.date()
+		else:
+			measurement_date = getdate(today())
+
 		# Calculate days since start
 		days = 0
 		if crop_cycle.start_date:
-			measurement_date = (
-				self.collection_datetime.date()
-				if self.collection_datetime
-				else frappe.utils.getdate(today())
-			)
 			days = date_diff(measurement_date, crop_cycle.start_date)
 
 		# Only update stage if this measurement shows progression
