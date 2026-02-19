@@ -40,6 +40,11 @@
   "avg_plant_height",
   "column_break_status2",
   "days_since_start",
+  "section_break_mortality",
+  "total_dead_plants",
+  "mortality_percentage",
+  "column_break_mortality",
+  "surviving_plants",
   "section_break_12",
   "crop_spacing",
   "crop_spacing_uom",
@@ -177,7 +182,7 @@
   {
    "fieldname": "cost_sapling",
    "fieldtype": "Currency",
-   "label": "Planned Cost / Plant – Sapling"
+   "label": "Planned Cost / Plant \u2013 Sapling"
   },
   {
    "fieldname": "column_break_stages2",
@@ -193,7 +198,7 @@
   {
    "fieldname": "cost_step1",
    "fieldtype": "Currency",
-   "label": "Planned Cost / Plant – Step 1"
+   "label": "Planned Cost / Plant \u2013 Step 1"
   },
   {
    "fieldname": "section_break_stages2",
@@ -209,7 +214,7 @@
   {
    "fieldname": "cost_step2",
    "fieldtype": "Currency",
-   "label": "Planned Cost / Plant – Step 2"
+   "label": "Planned Cost / Plant \u2013 Step 2"
   },
   {
    "fieldname": "column_break_stages3",
@@ -225,7 +230,7 @@
   {
    "fieldname": "cost_step3",
    "fieldtype": "Currency",
-   "label": "Planned Cost / Plant – Step 3"
+   "label": "Planned Cost / Plant \u2013 Step 3"
   },
   {
    "fieldname": "section_break_status",
@@ -326,6 +331,36 @@
    "fieldtype": "Table",
    "label": "Plant Analysis",
    "options": "Linked Plant Analysis"
+  },
+  {
+   "fieldname": "section_break_mortality",
+   "fieldtype": "Section Break",
+   "label": "Mortality Tracking"
+  },
+  {
+   "fieldname": "total_dead_plants",
+   "fieldtype": "Int",
+   "label": "Total Dead Plants",
+   "read_only": 1,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "mortality_percentage",
+   "fieldtype": "Percent",
+   "label": "Mortality %",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "column_break_mortality",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "surviving_plants",
+   "fieldtype": "Int",
+   "label": "Surviving Plants",
+   "read_only": 1,
+   "in_list_view": 1
   }
  ],
  "modified": "2024-01-01 00:00:00.000000",

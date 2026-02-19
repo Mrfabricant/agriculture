@@ -1,0 +1,168 @@
+{
+ "autoname": "AG-MORT-.YYYY.-.#####",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "crop_cycle",
+  "warehouse",
+  "column_break_1",
+  "posting_date",
+  "stage_at_mortality",
+  "section_break_2",
+  "dead_plant_qty",
+  "current_valuation_rate",
+  "column_break_2",
+  "total_cost_absorbed",
+  "surviving_qty",
+  "new_rate_after_absorption",
+  "section_break_3",
+  "stock_reconciliation",
+  "mortality_journal_entry",
+  "section_break_notes",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "crop_cycle",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Crop Cycle",
+   "options": "Crop Cycle",
+   "reqd": 1
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Warehouse (Block)",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "stage_at_mortality",
+   "fieldtype": "Select",
+   "label": "Stage at Mortality",
+   "options": "\nSapling (0 cm)\nStep 1 (5 cm)\nStep 2 (20 cm)\nStep 3 (35 cm)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_2",
+   "fieldtype": "Section Break",
+   "label": "Mortality Details"
+  },
+  {
+   "fieldname": "dead_plant_qty",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Dead Plant Qty",
+   "reqd": 1
+  },
+  {
+   "fieldname": "current_valuation_rate",
+   "fieldtype": "Currency",
+   "label": "Current Valuation Rate (SAR)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_cost_absorbed",
+   "fieldtype": "Currency",
+   "label": "Total Cost Absorbed by Survivors (SAR)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "surviving_qty",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Surviving Plant Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "new_rate_after_absorption",
+   "fieldtype": "Currency",
+   "label": "New Rate After Absorption (SAR)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_3",
+   "fieldtype": "Section Break",
+   "label": "Linked Documents"
+  },
+  {
+   "fieldname": "stock_reconciliation",
+   "fieldtype": "Link",
+   "label": "Stock Reconciliation",
+   "options": "Stock Reconciliation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "mortality_journal_entry",
+   "fieldtype": "Link",
+   "label": "Mortality Journal Entry",
+   "options": "Journal Entry",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_notes",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "is_submittable": 1,
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Agriculture",
+ "name": "Plant Mortality",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Agriculture Manager",
+   "share": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Agriculture User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "restrict_to_domain": "Agriculture",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
