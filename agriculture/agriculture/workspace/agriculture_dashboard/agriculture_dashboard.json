@@ -1,0 +1,87 @@
+{
+ "charts": [
+  {
+   "chart_name": "Active Batches by Stage",
+   "col": 12
+  },
+  {
+   "chart_name": "Block Occupancy",
+   "col": 12
+  }
+ ],
+ "content": "[{\"id\":\"section_cards\",\"type\":\"header\",\"data\":{\"text\":\"<h4>Farm Overview</h4>\",\"col\":12}},{\"id\":\"cards_row\",\"type\":\"card\",\"data\":{\"card_name\":\"Crop Cycle Summary\",\"col\":12}},{\"id\":\"section_shortcuts\",\"type\":\"header\",\"data\":{\"text\":\"<h4>Quick Actions</h4>\",\"col\":12}},{\"id\":\"shortcuts_row\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Crop Cycle\",\"col\":4}},{\"id\":\"shortcut_2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Plant Analysis\",\"col\":4}},{\"id\":\"shortcut_3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Plant Mortality\",\"col\":4}},{\"id\":\"shortcut_4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Stock Entry\",\"col\":4}},{\"id\":\"shortcut_5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Batch Cost Report\",\"col\":4}},{\"id\":\"shortcut_6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Delivery Note\",\"col\":4}}]",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "is_hidden": 0,
+ "label": "Agriculture Dashboard",
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Agriculture",
+ "name": "Agriculture Dashboard",
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "restrict_to_domain": "Agriculture",
+ "roles": [],
+ "sequence_id": 1,
+ "shortcuts": [
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Crop Cycle",
+   "link_to": "Crop Cycle",
+   "type": "DocType"
+  },
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "label": "Plant Analysis",
+   "link_to": "Plant Analysis",
+   "type": "DocType"
+  },
+  {
+   "color": "Red",
+   "doc_view": "List",
+   "label": "Plant Mortality",
+   "link_to": "Plant Mortality",
+   "type": "DocType"
+  },
+  {
+   "color": "Orange",
+   "doc_view": "List",
+   "label": "Stock Entry",
+   "link_to": "Stock Entry",
+   "type": "DocType"
+  },
+  {
+   "color": "Purple",
+   "label": "Batch Cost Report",
+   "link_to": "Batch Cost Report",
+   "type": "Report"
+  },
+  {
+   "color": "Cyan",
+   "doc_view": "List",
+   "label": "Delivery Note",
+   "link_to": "Delivery Note",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Journal Entry",
+   "link_to": "Journal Entry",
+   "type": "DocType"
+  },
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "label": "Purchase Receipt",
+   "link_to": "Purchase Receipt",
+   "type": "DocType"
+  }
+ ],
+ "title": "Agriculture Dashboard"
+}
